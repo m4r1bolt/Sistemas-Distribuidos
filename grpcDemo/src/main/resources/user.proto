@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option java_package = "sistemasd.grpc";
+
+service user{
+	rpc CreateUser(CreateRequest) returns (UsersRequest);
+	rpc DeleteUser(CreateRequest)returns (Empyt);
+	rpc UpdateUser(UpdateRequest) returns (UsersRequest);
+	rpc ListUser(Empyt) returns (ListRequest);
+	rpc GetUser(GetRequest) returns (UsersRequest);
+}
+
+message CreateRequest{
+	string name = 1;
+	string email = 2;
+}
+
+message UsersRequest{
+	string responsemessage = 1;
+	int32 responseCode = 2;
+}
+message Empyt{}
+
+message UpdateRequest{
+	int32 id = 1;
+	string values = 2;
+}
+
+message ListRequest{
+	repeated CreateRequest users = 1;
+}
+
+message GetRequest{
+	int32 id = 1;
+}
+
